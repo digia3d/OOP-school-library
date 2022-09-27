@@ -1,3 +1,5 @@
+require_relative './nameable.rb'
+
 class Person
   attr_accessor :age, :name, :rental
   attr_reader :id
@@ -7,7 +9,6 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rentals = []
     super()
   end
 
@@ -24,8 +25,3 @@ class Person
   def correct_name
     @name
   end
-
-  def add_rental(book, date)
-    Rental.new(date, self, book)
-  end
-end
