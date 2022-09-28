@@ -1,4 +1,4 @@
-require_relative './nameable.rb'
+require_relative './nameable'
 
 class Person
   attr_accessor :age, :name, :rental
@@ -26,4 +26,3 @@ class Person
     @name
   end
 end
-
