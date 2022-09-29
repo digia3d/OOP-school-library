@@ -5,6 +5,8 @@ require './classroom'
 require './book'
 require './rental'
 
+# rubocop:disable Metrics
+
 class App
   def initialize
     @people = []
@@ -31,7 +33,7 @@ class App
     puts '7 - Exit'
     option = gets.chomp
 
-    get_option option
+    select_option option
   end
 
   def select_option(input)
@@ -161,3 +163,4 @@ def list_rentals_by_person_id
   sleep 0.65
   menu
 end
+# rubocop:enable Metrics
