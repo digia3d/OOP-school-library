@@ -6,6 +6,8 @@ require './book'
 require './rental'
 
 class App
+  attr_accessor :people, :books, :rentals
+
   def initialize
     @people = []
     @books = []
@@ -98,15 +100,15 @@ end
 def create_a_rental
   puts 'Select a book from the following list by number'
   @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title} Author: #{book.author}" }
-  book_id = gets.chomp.to_i
+  book_index = gets.chomp.to_i
 
   puts 'Select a person from the following list by number (not id)'
   @people.each_with_index { |person, index| puts "#{index}) ID:#{person.id} Name: #{person.name} Age:#{person.age}" }
-  person_id = gets.chomp.to_i
+  person_index = gets.chomp.to_i
 
   print 'Date: '
   date = gets.chomp
-  rental = Rental.new(date, @people[person_id], @books[book_id])
+  rental = Rental.new(date, @people[person_index], @books[book_index])
   @rentals.push(rental)
   puts 'Rental created successfully'
   sleep 0.65
@@ -117,10 +119,10 @@ def list_rentals_by_person_id
   puts 'List of all rentals by person id'
   puts 'Select a person from the following list by ID'
   @people.each { |person| puts "ID: #{person.id} Name: #{person.name} Age:#{person.age}" }
-  id = gets.chomp
-  puts 'Rentals: '
+  id = gets.chomp.to_i
+  puts 'Rentals:'
   @rentals.each do |rental|
-    puts "Date: #{rental.date} - Book: #{rental.book.title} - Author: #{rental.book.author}" if rental.person.id == id
+    puts "Date: #{rental.date}, Book: #{rental.book.title}, Author: #{rental.book.author}" if rental.person.id == id
   end
   sleep 0.65
   menu
