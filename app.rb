@@ -10,7 +10,7 @@ class App
     @people = []
     @books = []
     @rentals = []
-    @class = Classroom.new('10')
+    @class = Classroom.new('Grade 10')
   end
 
   def start_app
@@ -57,7 +57,7 @@ class App
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase
 
-    student = Student.new(age, @class, name, parent_permission)
+    student = Student.new(age, @class, name, parent_permission: parent_permission)
     @people << student
     puts 'Student created successfully'
     sleep 0.75
@@ -109,7 +109,7 @@ def create_a_rental
   print 'Date: '
   date = gets.chomp.to_s
   rental = Rental.new(date, @people[person_id], @books[book_id])
-  @rentals << rental
+  @rentals.push(rental)
   puts 'Rental created successfully'
   sleep 0.65
   menu
