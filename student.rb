@@ -1,5 +1,4 @@
 require_relative './person'
-require 'pry'
 
 class Student < Person
   attr_reader :classroom
@@ -8,7 +7,7 @@ class Student < Person
     super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
-binding.pry
+
   def play_hooky
     "¯\(ツ)/¯"
   end
