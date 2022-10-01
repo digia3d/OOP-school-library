@@ -115,6 +115,7 @@ def create_a_rental
   menu
 end
 
+
 def list_rentals_by_person_id
   print 'ID of person: '
   id = gets.chomp.to_i
