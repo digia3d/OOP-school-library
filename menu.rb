@@ -1,0 +1,80 @@
+require './create_a_person'
+require './create_a_student'
+require './create_a_teacher'
+require './classroom'
+require './create_a_book'
+require './create_a_rental'
+
+# rubocop:disable Metrics
+
+class Options
+  def initialize
+    @people = []
+    @books = []
+    @rentals = []
+    @class = Classroom.new('Grade 10')
+  end
+
+  def menu
+    puts
+    puts 'Please choose an option by entering a number'
+    puts '1 - List all books'
+    puts '2 - List all people'
+    puts '3 - Create a person'
+    puts '4 - Create a book'
+    puts '5 - Create a rental'
+    puts '6 - List all rentals for a given person id'
+    puts '7 - Exit'
+    option = gets.chomp
+
+    select_option option
+  end
+
+  def select_option(input)
+    case input
+    when '1'
+      list_all_books
+    when '2'
+      list_all_people
+    when '3'
+      create_a_person
+    when '4'
+      create_a_book
+    when '5'
+      create_a_rental
+    when '6'
+      list_rentals_by_person_id
+    when '7'
+      puts 'Thank you for using this app!'
+    else
+      puts 'Please enter a number between 1 and 7'
+    end
+  end
+
+  def list_all_books
+    puts 'There are no books yet! Kindly add books.' if @books.empty?
+
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+    sleep 0.65
+    menu
+  end
+
+  def list_all_people
+    puts 'There are no people yet! Kindly add a student or teacher.' if @people.empty?
+    @people.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    sleep 0.65
+    menu
+  end
+
+  def list_rentals_by_person_id
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    puts 'Rentals:'
+    @rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+    end
+    sleep 0.65
+    menu
+  end
+end
+# rubocop:enable Metrics
