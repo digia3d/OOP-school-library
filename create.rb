@@ -24,5 +24,3 @@ class Create
     end
   end
 end
-
-
