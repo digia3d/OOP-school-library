@@ -1,48 +1,23 @@
-#! /usr/bin/env ruby
+require_relative 'create'
 
-require_relative './app'
+def main
+  create = Create.new
+  puts 'Welcome to School Library App!'
 
-# rubocop:disable Metrics
+  loop do
+    puts "\nPlease choose an option by enetering a number:\n1 - List all books"
+    puts "2 - List all people\n3 - Create a person"
+    puts "4 - Create a book\n5 - Create a rental\n6 - List all rentals for a given person id\n7 - Exit"
 
-def menu
-  puts
-  puts 'Please choose an option by entering a number'
-  puts '1 - List all books'
-  puts '2 - List all people'
-  puts '3 - Create a person'
-  puts '4 - Create a book'
-  puts '5 - Create a rental'
-  puts '6 - List all rentals for a given person id'
-  puts '7 - Exit'
-  option = gets.chomp
+    choice = gets.chomp.to_i
+    if choice == 7
+      puts 'Thanks for using this app!'
+      break
+    end
 
-  select_option option
-end
-
-def select_option(input)
-  case input
-  when '1'
-    list_all_books
-  when '2'
-    list_all_people
-  when '3'
-    create_a_person
-  when '4'
-    create_a_book
-  when '5'
-    create_a_rental
-  when '6'
-    list_rentals_by_person_id
-  when '7'
-    puts 'Thank you for using this app!'
-  else
-    puts 'Please enter a number between 1 and 7'
+    create.select_option(choice)
   end
 end
 
-def main
-  app = App.new
-  app.start_app
-end
-# rubocop:enable Metrics
 main
+
