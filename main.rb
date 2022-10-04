@@ -1,22 +1,26 @@
-require_relative 'create'
+#! /usr/bin/env ruby
 
-def main
-  create = Create.new
-  puts 'Welcome to School Library App!'
+require_relative './app'
 
-  loop do
-    puts "\nPlease choose an option by enetering a number:\n1 - List all books"
-    puts "2 - List all people\n3 - Create a person"
-    puts "4 - Create a book\n5 - Create a rental\n6 - List all rentals for a given person id\n7 - Exit"
+def menu(app)
+  puts
+  puts 'Please choose an option by entering a number'
+  puts '1 - List all books'
+  puts '2 - List all people'
+  puts '3 - Create a person'
+  puts '4 - Create a book'
+  puts '5 - Create a rental'
+  puts '6 - List all rentals for a given person id'
+  puts '7 - Exit'
+  option = gets.chomp
 
-    choice = gets.chomp.to_i
-    if choice == 7
-      puts 'Thanks for using this app!'
-      break
-    end
-
-    create.select_option(choice)
-  end
+  app.select_option option
+  menu(app) unless option == '7'
 end
 
+def main
+  app = App.new
+  app.start_app
+  menu(app)
+end
 main
