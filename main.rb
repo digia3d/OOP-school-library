@@ -2,8 +2,6 @@
 
 require_relative './app'
 
-# rubocop:disable Metrics
-
 def menu(app)
   puts
   puts 'Please choose an option by entering a number'
@@ -17,15 +15,12 @@ def menu(app)
   option = gets.chomp
 
   app.select_option option
-  menu(app) unless option=='7' 
+  menu(app) unless option == '7'
 end
-
-
 
 def main
   app = App.new
   app.start_app
   menu(app)
 end
-# rubocop:enable Metrics
 main
