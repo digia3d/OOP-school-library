@@ -4,6 +4,7 @@ require './teacher'
 require './classroom'
 require './book'
 require './rental'
+# rubocop:disable Metrics
 
 class Rentals
   attr_reader :list
@@ -162,3 +163,4 @@ class App
     end
   end
 end
+# rubocop:enable Metrics
