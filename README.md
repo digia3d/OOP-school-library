@@ -30,6 +30,12 @@
 - Twitter: [@ujvari65](https://twitter.com/ujvari65)
 - LinkedIn: [Aleksandra (Digital Marketing A3D) Ujvari](https://www.linkedin.com/in/aleksandra-ujvari-85235a210/)
 
+👤 **Alfred Kinyua**
+
+- GitHub: [@Alfred-KInyua](https://github.com/Alfred-KInyua)
+- Twitter: [@alfkinyua](https://twitter.com/alfkinyua)
+- LinkedIn: [Alfred-Kinyua](https://www.linkedin.com/in/alfred-kinyua/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
