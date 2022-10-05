@@ -130,10 +130,18 @@ class Books
 end
 
 class App
-  def initialize(people = People.new, books = Books.new, rentals = Rentals.new)
-    @people = people
-    @books = books
-    @rentals = rentals
+  include WriteRentals
+  include WritePeople
+  include WriteBooks
+  include ReadRentals
+  include ReadPeople
+  include ReadBooks
+  attr_accessor :books, :people, :rentals
+
+  def initialize(_people = People.new, _books = Books.new, _rentals = Rentals.new)
+    @people = read_people
+    @books = read_books
+    @rentals = read_rentals(@people, @books)
     @class = Classroom.new('Grade 10')
   end
 
@@ -157,9 +165,8 @@ class App
     when '6'
       @rentals.list_rentals_by_person_id
     when '7'
+      write_data(@books, @people, @rentals)
       puts 'Thank you for using this app!'
-    else
-      puts 'Please enter a number between 1 and 7'
     end
   end
 end
