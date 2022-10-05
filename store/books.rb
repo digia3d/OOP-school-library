@@ -1,4 +1,4 @@
-require_relative '../book.rb'
+require_relative '../book'
 require 'json'
 
 module WriteBooks

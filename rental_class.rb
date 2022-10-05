@@ -2,8 +2,7 @@ require 'json'
 require './rental'
 
 class Rentals
-
-  def self.create_a_rental(books, people, list)
+  def self.create_a_rental(books, people, _list)
     puts 'Select a book from the following list by number'
     books.each_with_index { |book, index| puts "#{index} Title: #{book.title}, Author: #{book.author}" }
     book_id = gets.chomp.to_i

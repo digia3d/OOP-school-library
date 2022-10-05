@@ -4,13 +4,13 @@ require './teacher'
 require './classroom'
 require './book'
 require './rental'
-require_relative './books_class.rb'
-require_relative './rental_class.rb'
-require_relative './people_class.rb'
+require_relative './books_class'
+require_relative './rental_class'
+require_relative './people_class'
 require_relative 'read_data'
-require_relative './store/books.rb'
-require_relative './store/people.rb'
-require_relative './store/rentals.rb'
+require_relative './store/books'
+require_relative './store/people'
+require_relative './store/rentals'
 # rubocop:disable Metrics
 
 class App
@@ -23,8 +23,10 @@ class App
   def initialize
     @people = read_people
     @books = read_books
-    @rentals = read_rentals(@people, @books)
-    @class = Classroom.new('Grade 10')
+    puts @people
+    puts @books
+    @rentals = []#read_rentals(@people, @books)
+    
   end
 
   def start_app
@@ -43,11 +45,13 @@ class App
     when '4'
       @books << Books.create_a_book
     when '5'
-      @rentals<<Rentals.create_a_rental(@books, @people, @rentals)
+      @rentals << Rentals.create_a_rental(@books, @people, @rentals)
     when '6'
       Rentals.list_rentals_by_person_id(@rentals)
     when '7'
-      write_data(@books, @people, @rentals)
+      write_books(@books)
+      write_people(@people)
+      write_rentals(@rentals)
       puts 'Thank you for using this app!'
     end
   end

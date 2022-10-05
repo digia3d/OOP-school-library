@@ -33,6 +33,8 @@ module ReadData
 
   def read_rentals(persons, books)
     rentals = []
+    puts persons
+    puts books
     if File.exist?('./rentals.json')
       json_rentals = JSON.parse(File.read('./rentals.json'))
       json_rentals.each do |rental|

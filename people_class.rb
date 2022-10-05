@@ -1,9 +1,9 @@
 require './person'
 require './student'
 require './teacher'
+require './classroom'
 
 class People
-
   def self.list_all_people(list)
     puts 'There are no people yet! Kindly add a student or teacher.' if list.empty?
     list.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
@@ -32,8 +32,9 @@ class People
 
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase
-
-    student = Student.new(age, @class, name, parent_permission: parent_permission)
+    parent_permission = parent_permission == 'y'
+    classone = Classroom.new('Grade 10')
+    student = Student.new(age, classone, name, parent_permission: parent_permission)
     puts 'Student created successfully'
     sleep 0.75
     student
