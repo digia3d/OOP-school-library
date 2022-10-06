@@ -1,1 +1,9 @@
-[{"date":"2022-7-23","person_name":"Peter","person_age":45,"title":"World wide web","author":"Tommy Lee"}]
+[
+  {
+    "date": "6.10.2022",
+    "person_name": "Daki",
+    "person_age": 22,
+    "title": "Harry Potter",
+    "author": "J.K.Rolings"
+  }
+]
