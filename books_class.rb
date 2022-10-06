@@ -1,3 +1,5 @@
+require_relative './book'
+
 class Books
   def self.list_all_books(list)
     puts 'There are no books yet! Kindly add books.' if list.empty?

@@ -7,11 +7,12 @@ module WriteRentals
     rentals.each do |rental|
       json_rentals << {
         date: rental.date,
-        id: rental.person.id,
+        person_name: rental.person.name,
+        person_age: rental.person.age,
         title: rental.book.title,
         author: rental.book.author
       }
     end
-    File.write('./rentals.json', JSON.generate(json_rentals))
+    File.write('json_data/rentals.json', JSON.generate(json_rentals))
   end
 end

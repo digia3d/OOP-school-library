@@ -26,9 +26,14 @@ class Rentals
     print 'ID of person: '
     id = gets.chomp.to_i
     puts 'Rentals:'
+    rentals = []
     list.each do |rental|
-      puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+      if rental.person.id == id
+        rentals << rental
+        puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
+      end
     end
+    puts 'No Rentals found' if rentals.empty?
     sleep 0.65
   end
 end

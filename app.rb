@@ -11,6 +11,7 @@ require_relative 'read_data'
 require_relative './store/books'
 require_relative './store/people'
 require_relative './store/rentals'
+require 'fileutils'
 # rubocop:disable Metrics
 
 class App
@@ -23,8 +24,7 @@ class App
   def initialize
     @people = read_people
     @books = read_books
-    @rentals = [] # read_rentals(@people, @books)
-    @class = Classroom.new('Grade 10')
+    @rentals = read_rentals(@people, @books)
   end
 
   def start_app
@@ -47,6 +47,8 @@ class App
     when '6'
       Rentals.list_rentals_by_person_id(@rentals)
     when '7'
+      FileUtils.mkdir_p('json_data')
+
       write_books(@books)
       write_people(@people)
       write_rentals(@rentals)

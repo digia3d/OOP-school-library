@@ -12,6 +12,7 @@ module WritePeople
             id: person.id,
             name: person.name,
             age: person.age,
+            classroom: person.classroom.label,
             parent_permission: person.parent_permission
           }
       elsif person.instance_of? Teacher
@@ -24,7 +25,7 @@ module WritePeople
         }
       end
     end
-    File.write('./people.json', JSON.generate(json_people))
+    File.write('json_data/people.json', JSON.generate(json_people))
   end
   # rubocop:enable Metrics
 end
