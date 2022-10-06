@@ -1,3 +1,5 @@
+require_relative './rental'
+
 module ReadData
   def read_books
     books = []
@@ -7,7 +9,7 @@ module ReadData
         books << Book.new(book['title'], book['author'])
       end
     else
-      File.write('./books.json', [])
+      File.write('./json-data/books.json', [])
     end
     books
   end
@@ -26,15 +28,13 @@ module ReadData
           end
       end
     else
-      File.write('./people.json', [])
+      File.write('./json-data/people.json', [])
     end
     persons
   end
 
   def read_rentals(persons, books)
     rentals = []
-    puts persons
-    puts books
     if File.exist?('./rentals.json')
       json_rentals = JSON.parse(File.read('./rentals.json'))
       json_rentals.each do |rental|

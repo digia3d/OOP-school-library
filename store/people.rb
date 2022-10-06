@@ -1,19 +1,20 @@
-require_relative '../person.rb'
-
+require_relative '../person'
+require 'json'
+# rubocop:disable Metrics
 module WritePeople
   def write_people(people)
     json_people = []
     people.each do |person|
-        if person.instance_of? Student
-          json_people << 
+      if person.instance_of? Student
+        json_people <<
           {
-          json_class: 'Student',
-          id: person.id,
-          name: person.name,
-          age: person.age,
-          parent_permission: person.parent_permission
-        }
-      elseif person.instance_of? Teacher
+            json_class: 'Student',
+            id: person.id,
+            name: person.name,
+            age: person.age,
+            parent_permission: person.parent_permission
+          }
+      elsif person.instance_of? Teacher
         json_people << {
           json_class: 'Teacher',
           id: person.id,
@@ -21,8 +22,9 @@ module WritePeople
           age: person.age,
           specialization: person.specialization
         }
-        end
+      end
     end
-    File.write('./json-data/people.json', JSON.generate(json_people))
+    File.write('./people.json', JSON.generate(json_people))
   end
+  # rubocop:enable Metrics
 end

@@ -1,5 +1,6 @@
 require 'json'
 require './rental'
+require './book'
 
 class Rentals
   def self.create_a_rental(books, people, _list)

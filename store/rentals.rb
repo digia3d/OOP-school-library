@@ -1,4 +1,5 @@
 require_relative '../rental'
+require 'json'
 
 module WriteRentals
   def write_rentals(rentals)

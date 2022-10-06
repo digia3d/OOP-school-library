@@ -23,10 +23,8 @@ class App
   def initialize
     @people = read_people
     @books = read_books
-    puts @people
-    puts @books
-    @rentals = []#read_rentals(@people, @books)
-    
+    @rentals = [] # read_rentals(@people, @books)
+    @class = Classroom.new('Grade 10')
   end
 
   def start_app
